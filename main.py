@@ -34,7 +34,7 @@ def parse_arguments():
     parser.add_argument("--read", help="New-line separated file of Youtube URLs to download as MP3 files", type=str, required=False)
     parser.add_argument("--write", help="Directory to move the downloaded files into", type=str, required=False)
     return parser.parse_args()
-    
+
 def init_arguments():
     args = parse_arguments()
 
@@ -54,9 +54,7 @@ def read_urls(read_file):
     with open(read_file, "r") as file:
         lines = [line.strip() for line in file if line != ""]
         return list(filter(lambda x: x != "", lines))
-    
 
-    
 # ==================== Main ====================
 
 def main():
@@ -78,6 +76,6 @@ def main():
     # Download each URL
     with YoutubeDL(youtube_dl_options) as youtube_dl:
         youtube_dl.download(urls)
-    
+
 if __name__ == "__main__":
     main()
