@@ -11,16 +11,17 @@ $ python swim-pro.py --read /path/to/urls.txt --write /path/to/SwimPro
 import os
 import sys
 import argparse
+import json
 
 from yt_dlp import YoutubeDL
 
 # User's home directory
 HOME = os.path.expanduser("~")
 
-# Default directory to read MP3 files from
+# Default directory to read media files from
 DEFAULT_READ_FILE = f"{HOME}/Downloads/youtube-urls.txt"
 
-# Default directory to move the downloaded MP3 files into
+# Default directory to move the downloaded media files into
 DEFAULT_WRITE_DIR = "/Volumes/SWIM PRO"
 
 # ==================== Arguments ====================
@@ -28,8 +29,8 @@ DEFAULT_WRITE_DIR = "/Volumes/SWIM PRO"
 def parse_arguments():
     file_name = os.path.basename(sys.argv[0])
     parser = argparse.ArgumentParser(file_name)
-    parser.add_argument("--read", help="New-line separated file of Youtube URLs to download as MP3 files", type=str, required=False)
-    parser.add_argument("--write", help="Directory to move the downloaded files into", type=str, required=False)
+    parser.add_argument("--read", help="New-line separated file of Youtube URLs to download", type=str, required=False)
+    parser.add_argument("--write", help="Directory to downloaded the media files into", type=str, required=False)
     return parser.parse_args()
 
 def init_arguments():
@@ -51,6 +52,12 @@ def read_urls(read_file):
     with open(read_file, "r") as file:
         lines = [line.strip() for line in file if line != ""]
         return list(filter(lambda x: x != "", lines))
+    
+# ==================== Video Info ====================
+
+def print_info(youtube_dl, url):
+    info = youtube_dl.extract_info(url, download=False)
+    print(json.dumps(youtube_dl.sanitize_info(info)))
 
 # ==================== Main ====================
 
@@ -67,7 +74,8 @@ def main():
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
             "preferredcodec": "m4a",
-        }]
+        }],
+        "outtmpl": f"{write_dir}/%(title)s.%(ext)s"
     }
 
     # Download each URL
