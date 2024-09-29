@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 """
-1. Reads a new-line separated file of Youtube URLs to download as MP3 files (read_dir)
-2. Downloads into a temporary directory using yt-dlp (https://github.com/yt-dlp/yt-dlp)
-3. Moves downloaded files into the Swim Pro directory (write_dir).
+Reads a new-line separated file of Youtube URLs to download as `.m4a` files (read_file)
+Downloads URLs using yt-dlp (https://github.com/yt-dlp/yt-dlp) into the Swim Pro directory (write_dir).
 
 Example usage (arguments are defaulted):
 $ python swim-pro.py --read /path/to/urls.txt --write /path/to/SwimPro
@@ -12,8 +11,6 @@ $ python swim-pro.py --read /path/to/urls.txt --write /path/to/SwimPro
 import os
 import sys
 import argparse
-import subprocess
-import tempfile
 
 from yt_dlp import YoutubeDL
 
@@ -66,10 +63,10 @@ def main():
     
     # Specify the configuration for the download
     youtube_dl_options = {
-        'format': 'mp4/bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'm4a',
+        "format": "mp4/bestaudio/best",
+        "postprocessors": [{
+            "key": "FFmpegExtractAudio",
+            "preferredcodec": "m4a",
         }]
     }
 
