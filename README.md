@@ -31,5 +31,5 @@ pip3 install -r ./requirements.txt
 In an active VE, run the program
 
 ```bash
-python main.py
+python3 main.py
 ```
