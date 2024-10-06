@@ -5,7 +5,7 @@ Reads a new-line separated file of Youtube URLs to download as `.m4a` files (rea
 Downloads URLs using yt-dlp (https://github.com/yt-dlp/yt-dlp) into the Swim Pro directory (write_dir).
 
 Example usage (arguments are defaulted):
-$ python swim-pro.py --read /path/to/urls.txt --write /path/to/SwimPro
+$ python main.py --read /path/to/urls.txt --write /path/to/SwimPro
 """
 
 import os
