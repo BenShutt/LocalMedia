@@ -1,6 +1,6 @@
 # Local Media
 
-Python program to download YouTube videos as MP3 files for my swimming headphones.
+Python program to download YouTube videos as `m4a` files for, say, swimming headphones.
 
 ## Dependencies
 
