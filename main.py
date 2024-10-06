@@ -18,10 +18,10 @@ from yt_dlp import YoutubeDL
 # User's home directory
 HOME = os.path.expanduser("~")
 
-# Default directory to read media files from
+# Default file to read media URLs from
 DEFAULT_READ_FILE = f"{HOME}/Downloads/youtube-urls.txt"
 
-# Default directory to move the downloaded media files into
+# Default directory to download the media files into
 DEFAULT_WRITE_DIR = "/Volumes/SWIM PRO"
 
 # ==================== Arguments ====================
@@ -67,6 +67,11 @@ def main():
     
     # Extract the URLs from the file to read
     urls = read_urls(read_file)
+    
+    # Exit if there are no urls to download
+    if len(urls) == 0:
+        print(f"No URLs to download in {read_file}")
+        return
     
     # Specify the configuration for the download
     youtube_dl_options = {
