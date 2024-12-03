@@ -20,7 +20,7 @@ Activate the VE:
 source ./venv/bin/activate
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 pip3 install -r ./requirements.txt
@@ -28,7 +28,7 @@ pip3 install -r ./requirements.txt
 
 ## Run
 
-In an active VE, run the program
+In an active VE, run the program:
 
 ```bash
 python3 main.py
