@@ -8,28 +8,16 @@ The project uses [yt-dlp](https://github.com/yt-dlp/yt-dlp) to download the vide
 
 ## Installation
 
-Set up virtual environment (VE):
+Set up virtual environment (venv):
 
 ```bash
-python3 -m venv ./venv
-```
-
-Activate the VE:
-
-```bash
-source ./venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
-pip3 install -r ./requirements.txt
+./scripts/install.sh
 ```
 
 ## Run
 
-In an active VE, run the program:
+Once the venv is set up:
 
 ```bash
-python3 main.py
+./scripts/run.sh
 ```
