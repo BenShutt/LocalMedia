@@ -15,6 +15,8 @@ import json
 
 from yt_dlp import YoutubeDL
 
+# ==================== Constants ====================
+
 # User's home directory
 HOME = os.path.expanduser("~")
 
@@ -53,12 +55,6 @@ def read_urls(read_file):
         lines = [line.strip() for line in file if line != ""]
         return list(filter(lambda x: x != "", lines))
     
-# ==================== Video Info ====================
-
-def print_info(youtube_dl, url):
-    info = youtube_dl.extract_info(url, download=False)
-    print(json.dumps(youtube_dl.sanitize_info(info)))
-
 # ==================== Main ====================
 
 def main():
