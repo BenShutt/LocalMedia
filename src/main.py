@@ -11,7 +11,6 @@ $ python main.py --read /path/to/urls.txt --write /path/to/SwimPro
 import os
 import sys
 import argparse
-import json
 
 from yt_dlp import YoutubeDL
 
